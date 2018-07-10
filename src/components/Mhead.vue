@@ -12,7 +12,7 @@
           </span>
           <span v-else><a href="#" target="_self" v-on:click="login">登陆</a></span>
           <span>|</span>
-          <span><a href="#">关于</a></span>
+          <span><a href="#" v-on:click="about">关于</a></span>
         </div>
       </el-col>
     </el-row>
@@ -38,6 +38,9 @@ export default {
     },
     addbook () {
       this.$router.push('addbook')
+    },
+    about () {
+      this.$router.push('about')
     }
   },
   mounted () {

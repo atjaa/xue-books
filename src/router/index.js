@@ -55,6 +55,11 @@ export default new Router({
           path: '/addbook',
           name: 'addbook',
           component: resolved => require(['@/components/Addbook.vue'], resolved)
+        },
+        {
+          path: '/about',
+          name: 'about',
+          component: resolved => require(['@/components/About.vue'], resolved)
         }
       ]
     }
