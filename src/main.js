@@ -7,6 +7,7 @@ import Maside from './components/Maside'
 import Mhead from './components/Mhead'
 import Msmenu from './components/Msmenu'
 import Mlist from './components/Mlist'
+import MFooter from './components/Footer'
 
 import { Button
   , Dialog
@@ -16,8 +17,9 @@ import { Button
   , Container
   , Main
   , Tabs
-  , TabPane, Collapse, CollapseItem, Pagination, Form, FormItem, Select, Option, Input, Cascader} from 'element-ui'
+  , TabPane, Collapse, CollapseItem, Pagination, Form, FormItem, Select, Option, Input, Cascader, Footer} from 'element-ui'
 
+Vue.use(Footer)
 Vue.use(Cascader)
 Vue.use(Button)
 Vue.use(Dialog)
@@ -43,6 +45,7 @@ Vue.component('m-aside', Maside)
 Vue.component('m-head', Mhead)
 Vue.component('m-s-menu', Msmenu)
 Vue.component('m-list', Mlist)
+Vue.component('m-footer', MFooter)
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
@@ -52,7 +55,6 @@ new Vue({
 })
 
 router.beforeEach((to, from, next) => {
-  console.log(to)
   if (to.path === '/addbook' && sessionStorage.getItem('user') === null) {
     next({
       path: '/login',

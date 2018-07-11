@@ -11,7 +11,7 @@ export default {
   name: '',
   data () {
     return {
-      tabPosition: 'right'
+      tabPosition: 'top'
     }
   },
   props: ['mmenu'],

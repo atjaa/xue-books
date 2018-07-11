@@ -1,6 +1,6 @@
 <template>
   <div class="m-aside">
-    <img src="/static/images/ooopic.ico" />
+    <img src="/static/images/timg.jpeg" />
     <el-row>
       <a href="#" target="_parent" v-on:click="goType('wenxue')">
         <div class="m-i-aside">

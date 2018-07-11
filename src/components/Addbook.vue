@@ -59,37 +59,55 @@ export default {
         value: '1',
         label: '文学艺术',
         children: [
-          {value: '1-1', label: '小说'}
+          {value: '1-1', label: '小说'},
+          {value: '1-2', label: '文学'},
+          {value: '1-3', label: '动漫'},
+          {value: '1-4', label: '传记'}
         ]
       }, {
         value: '2',
         label: '人文社科',
         children: [
-          {value: '2-1', label: '小说'}
+          {value: '2-1', label: '历史'},
+          {value: '2-2', label: '哲学'},
+          {value: '2-3', label: '法律'},
+          {value: '2-4', label: '心理学'}
         ]
       }, {
         value: '3',
         label: '经济管理',
         children: [
-          {value: '3-1', label: '小说'}
+          {value: '3-1', label: '投资理财'},
+          {value: '3-2', label: '管理'},
+          {value: '3-3', label: '经济与金融'},
+          {value: '3-4', label: '市场营销'}
         ]
       }, {
         value: '4',
         label: '科技',
         children: [
-          {value: '4-1', label: '小说'}
+          {value: '4-1', label: '科普'},
+          {value: '4-2', label: '计算机与网络'},
+          {value: '4-3', label: '医学'},
+          {value: '4-4', label: '建筑'}
         ]
       }, {
         value: '5',
         label: '励志与成功',
         children: [
-          {value: '5-1', label: '小说'}
+          {value: '5-1', label: '心灵读物'},
+          {value: '5-2', label: '人际交往'},
+          {value: '5-3', label: '职场'},
+          {value: '5-4', label: '成功学'}
         ]
       }, {
         value: '6',
         label: '生活',
         children: [
-          {value: '6-1', label: '小说'}
+          {value: '6-1', label: '孕产育儿'},
+          {value: '6-2', label: '烹饪美食'},
+          {value: '6-3', label: '健康养生'},
+          {value: '6-4', label: '旅游'}
         ]
       }],
       selectedOptions: ['1', '1-1'],
@@ -143,7 +161,8 @@ export default {
                 MessageBox.alert('新增图书成功', '新增', {
                   confirmButtonText: '确定'
                 })
-                vm.$router.push('/wenxue')
+                // vm.$router.push('/wenxue')
+                vm.resetForm('book')
               } else {
                 MessageBox.alert(response.data, '新增', {
                   confirmButtonText: '确定'
@@ -164,6 +183,7 @@ export default {
     },
     resetForm (formName) {
       this.$refs[formName].resetFields()
+      this.selectedOptions = ['1', '1-1']
     },
     handleItemChange (val) {
       this.book.menuid = val[1]

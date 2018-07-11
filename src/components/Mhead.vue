@@ -6,7 +6,7 @@
       <el-col :span="4" :offset="16">
         <div>
           <span v-if="user !== ''">
-           <a href="#" @click="addbook()">添加图书</a> &nbsp;|
+           <el-button type="warning" @click="addbook()" size="mini" round>添加图书</el-button> &nbsp;|
             {{user.nickname}}
             |&nbsp;<a href="#" @click="loginout()">退出</a>
           </span>
@@ -57,7 +57,7 @@ export default {
 <style scoped>
   .m-head {
     border-radius: 4px;
-    min-height: 26px;
+    min-height: 36px;
     margin-top: 10px;
     font-size: 0.8em;
     padding: 0px 0px 0px 20px;

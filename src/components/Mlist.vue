@@ -7,9 +7,9 @@
           <span>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;</span>
           <span>作者：{{item.author}}</span>
         </template>
-        <div>介绍：{{item.introduction}}</div>
-        <div>资源地址：<a :href="item.pan" target="_blank">{{item.pan}}</a></div>
-        <div>来源：{{item.source}}</div>
+        <div class="m-book-line">介绍：{{item.introduction}}</div>
+        <div class="m-book-line">资源地址：<a :href="item.pan" target="_blank">{{item.pan}}</a></div>
+        <div class="m-book-line">来源：{{item.source}}</div>
       </el-collapse-item>
     </el-collapse>
     <el-pagination
@@ -77,6 +77,9 @@ export default {
 <style scoped>
   .m-book-list{
     text-align: left;
+  }
+  .m-book-line {
+    padding: 0 30px;
   }
   .el-collapse {
     border-top: hidden!important;
