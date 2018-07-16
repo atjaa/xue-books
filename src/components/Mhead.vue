@@ -2,8 +2,21 @@
   <div class="m-head">
     <el-row>
       <el-col :span="4">
-        <div class="m-menu"><i class="el-icon-d-arrow-right"></i>{{hmenu}}</div></el-col>
-      <el-col :span="4" :offset="16">
+        <div class="m-menu"><i class="el-icon-d-arrow-right"></i>{{hmenu}}</div>
+      </el-col>
+      <el-col :span="8">
+        <div class="m-searchs">
+          <el-input v-model="searchvalue" placeholder="请输入搜索内容" size="mini">
+            <el-select v-model="searchtype" slot="prepend" placeholder="请选择">
+              <el-option label="按书名" value="1"></el-option>
+              <el-option label="按作者" value="2"></el-option>
+              <el-option label="按简介" value="3"></el-option>
+            </el-select>
+            <el-button slot="append" icon="el-icon-search" @click="searchbook()"></el-button>
+          </el-input>
+        </div>
+      </el-col>
+      <el-col :span="4" :offset="8">
         <div>
           <span v-if="user !== ''">
            <el-button type="warning" @click="addbook()" size="mini" round>添加图书</el-button> &nbsp;|
@@ -20,11 +33,14 @@
 </template>
 
 <script>
+import { MessageBox } from 'element-ui'
 export default {
   name: '',
   data () {
     return {
-      user: ''
+      user: '',
+      searchtype: '1',
+      searchvalue: ''
     }
   },
   props: ['hmenu'],
@@ -41,6 +57,15 @@ export default {
     },
     about () {
       this.$router.push('about')
+    },
+    searchbook () {
+      if (this.searchtype === '' || this.searchvalue === '') {
+        MessageBox.alert('查询条件不能为空', '查询', {
+          confirmButtonText: '确定'
+        })
+      } else {
+        this.$router.push({path: 'search', query: {t: Date.parse(new Date()), searchtype: this.searchtype, searchvalue: this.searchvalue}})
+      }
     }
   },
   mounted () {
@@ -69,5 +94,11 @@ export default {
   }
   .m-menu {
     text-align: left!important;
+  }
+  .el-select{
+    width: 90px!important;
+  }
+  .input-with-select .el-input-group__prepend {
+    background-color: #fff;
   }
 </style>

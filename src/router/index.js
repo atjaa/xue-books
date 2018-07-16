@@ -60,6 +60,11 @@ export default new Router({
           path: '/about',
           name: 'about',
           component: resolved => require(['@/components/About.vue'], resolved)
+        },
+        {
+          path: '/search',
+          name: 'search',
+          component: resolved => require(['@/components/Search.vue'], resolved)
         }
       ]
     }

@@ -8,6 +8,7 @@ import Mhead from './components/Mhead'
 import Msmenu from './components/Msmenu'
 import Mlist from './components/Mlist'
 import MFooter from './components/Footer'
+import Slist from './components/SearchItem'
 
 import { Button
   , Dialog
@@ -46,6 +47,7 @@ Vue.component('m-head', Mhead)
 Vue.component('m-s-menu', Msmenu)
 Vue.component('m-list', Mlist)
 Vue.component('m-footer', MFooter)
+Vue.component('s-list', Slist)
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
