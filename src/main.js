@@ -11,6 +11,7 @@ import MFooter from './components/Footer'
 import Slist from './components/SearchItem'
 
 import { Button
+  , ButtonGroup
   , Dialog
   , Row
   , Col
@@ -18,11 +19,12 @@ import { Button
   , Container
   , Main
   , Tabs
-  , TabPane, Collapse, CollapseItem, Pagination, Form, FormItem, Select, Option, Input, Cascader, Footer} from 'element-ui'
+  , TabPane, Collapse, CollapseItem, Pagination, Form, FormItem, Select, Option, Input, Cascader, Footer, Calendar} from 'element-ui'
 
 Vue.use(Footer)
 Vue.use(Cascader)
 Vue.use(Button)
+Vue.use(ButtonGroup)
 Vue.use(Dialog)
 Vue.use(Row)
 Vue.use(Col)
@@ -39,6 +41,7 @@ Vue.use(FormItem)
 Vue.use(Select)
 Vue.use(Option)
 Vue.use(Input)
+Vue.use(Calendar)
 Vue.config.productionTip = false
 // Vue.prototype.mhost = 'https://xue37.cn/bot'
 Vue.prototype.mhost = 'https://' + window.location.host.split(':')[0] + '/bot'

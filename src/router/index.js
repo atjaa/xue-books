@@ -62,6 +62,11 @@ export default new Router({
           component: resolved => require(['@/components/About.vue'], resolved)
         },
         {
+          path: '/calendar',
+          name: 'calendar',
+          component: resolved => require(['@/components/Calendar.vue'], resolved)
+        },
+        {
           path: '/search',
           name: 'search',
           component: resolved => require(['@/components/Search.vue'], resolved)
