@@ -1,6 +1,6 @@
 <template>
   <div>
-    <!--<m-head :hmenu="hmenu"></m-head>-->
+    <m-head :hmenu="hmenu"></m-head>
     <div class="m-about-body">
       <el-calendar v-model="value">
       </el-calendar>

@@ -16,7 +16,7 @@
           </el-input>
         </div>
       </el-col>
-      <el-col :span="4" :offset="8">
+      <el-col :span="6" :offset="6">
         <div>
           <span v-if="user !== ''">
            <el-button type="warning" @click="addbook()" size="mini" round>添加图书</el-button> &nbsp;|
@@ -26,6 +26,8 @@
           <span v-else><a href="#" target="_self" v-on:click="login">登陆</a></span>
           <span>|</span>
           <span><a href="#" v-on:click="about">关于</a></span>
+          <span>|</span>
+          <span><a href="#" v-on:click="calendar">日历</a></span>
         </div>
       </el-col>
     </el-row>
@@ -57,6 +59,9 @@ export default {
     },
     about () {
       this.$router.push('about')
+    },
+    calendar () {
+      this.$router.push('calendar')
     },
     searchbook () {
       if (this.searchtype === '' || this.searchvalue === '') {
