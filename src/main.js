@@ -3,24 +3,40 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import Maside from './components/Maside'
-import Mhead from './components/Mhead'
-import Msmenu from './components/Msmenu'
-import Mlist from './components/Mlist'
-import MFooter from './components/Footer'
-import Slist from './components/SearchItem'
-
+import Maside from './components/book/Maside'
+import Mhead from './components/book/Mhead'
+import Msmenu from './components/book/Msmenu'
+import Mlist from './components/book/Mlist'
+import MFooter from './components/book/Footer'
+import Slist from './components/book/SearchItem'
+import Xhead from './components/xue/Xhead'
+import BlogMenu from './components/blog/BlogMenu'
+import '../static/css/markdown.css'
+import { quillEditor } from 'vue-quill-editor'
+import 'quill/dist/quill.core.css'
+import 'quill/dist/quill.snow.css'
+import 'quill/dist/quill.bubble.css'
 import { Button
-  , ButtonGroup
-  , Dialog
-  , Row
-  , Col
-  , Aside
+  , ButtonGroup, Menu, MenuItem, MenuItemGroup, Submenu
+  , Dialog, Breadcrumb, BreadcrumbItem, Divider
+  , Row, Tree, Card, Table, TableColumn, Link
+  , Col, Message
+  , Aside, Tag
   , Container
   , Main
   , Tabs
-  , TabPane, Collapse, CollapseItem, Pagination, Form, FormItem, Select, Option, Input, Cascader, Footer, Calendar} from 'element-ui'
-
+  , TabPane, Collapse, CollapseItem
+  , Pagination, Form, FormItem, Select
+  , Option, Input, Cascader, Footer
+  , Calendar, Header} from 'element-ui'
+Vue.use(Tag)
+Vue.use(quillEditor)
+Vue.use(Link)
+Vue.use(TableColumn)
+Vue.use(Table)
+Vue.use(Divider)
+Vue.use(Breadcrumb)
+Vue.use(BreadcrumbItem)
 Vue.use(Footer)
 Vue.use(Cascader)
 Vue.use(Button)
@@ -42,15 +58,28 @@ Vue.use(Select)
 Vue.use(Option)
 Vue.use(Input)
 Vue.use(Calendar)
+Vue.use(Header)
+Vue.use(Menu)
+Vue.use(MenuItem)
+Vue.use(MenuItemGroup)
+Vue.use(Submenu)
+Vue.use(Tree)
+Vue.use(Card)
 Vue.config.productionTip = false
+Vue.prototype.$message = Message
 // Vue.prototype.mhost = 'https://xue37.cn/bot'
-Vue.prototype.mhost = 'https://' + window.location.host.split(':')[0] + '/bot'
+// Vue.prototype.mhost = 'https://' + window.location.host.split(':')[0] + '/bot'
+Vue.prototype.mhost = 'http://localhost:8080/bot' // python服务
+Vue.prototype.gohost = 'http://localhost:8080/goo' // golang服务
 Vue.component('m-aside', Maside)
 Vue.component('m-head', Mhead)
 Vue.component('m-s-menu', Msmenu)
 Vue.component('m-list', Mlist)
 Vue.component('m-footer', MFooter)
 Vue.component('s-list', Slist)
+Vue.component('x-head', Xhead)
+Vue.component('b-menu', BlogMenu)
+Vue.component('quill-editor', quillEditor)
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

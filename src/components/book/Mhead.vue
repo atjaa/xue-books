@@ -6,7 +6,7 @@
       </el-col>
       <el-col :span="8">
         <div class="m-searchs">
-          <el-input v-model="searchvalue" placeholder="请输入搜索内容" size="mini">
+          <el-input v-model="searchvalue" placeholder="请输入搜索内容" size="mini" >
             <el-select v-model="searchtype" slot="prepend" placeholder="请选择">
               <el-option label="按书名" value="1"></el-option>
               <el-option label="按作者" value="2"></el-option>
@@ -28,6 +28,8 @@
           <span><a href="#" v-on:click="about">关于</a></span>
           <span>|</span>
           <span><a href="#" v-on:click="calendar">日历</a></span>
+          <span>|</span>
+          <span><a href="/">首页</a></span>
         </div>
       </el-col>
     </el-row>

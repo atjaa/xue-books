@@ -43,6 +43,7 @@ export default {
 <style scoped>
   .foot {
     font-size: x-small;
+    padding: 10px 20px;
   }
   .foot a{
     color: black;
