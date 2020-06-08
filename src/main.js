@@ -21,7 +21,7 @@ import { Button
   , Dialog, Breadcrumb, BreadcrumbItem, Divider
   , Row, Tree, Card, Table, TableColumn, Link
   , Col, Message
-  , Aside, Tag
+  , Aside, Tag, Tooltip
   , Container
   , Main
   , Tabs
@@ -29,6 +29,7 @@ import { Button
   , Pagination, Form, FormItem, Select
   , Option, Input, Cascader, Footer
   , Calendar, Header} from 'element-ui'
+Vue.use(Tooltip)
 Vue.use(Tag)
 Vue.use(quillEditor)
 Vue.use(Link)
@@ -67,10 +68,11 @@ Vue.use(Tree)
 Vue.use(Card)
 Vue.config.productionTip = false
 Vue.prototype.$message = Message
-// Vue.prototype.mhost = 'https://xue37.cn/bot'
+Vue.prototype.mhost = 'https://' + window.location.host.split(':')[0] + '/bot'
+Vue.prototype.gohost = 'https://' + window.location.host.split(':')[0] + '/goo'
 // Vue.prototype.mhost = 'https://' + window.location.host.split(':')[0] + '/bot'
-Vue.prototype.mhost = 'http://localhost:8080/bot' // python服务
-Vue.prototype.gohost = 'http://localhost:8080/goo' // golang服务
+// Vue.prototype.mhost = 'http://localhost:8080/bot' // python服务
+// Vue.prototype.gohost = 'http://localhost:8082/goo' // golang服务
 Vue.component('m-aside', Maside)
 Vue.component('m-head', Mhead)
 Vue.component('m-s-menu', Msmenu)

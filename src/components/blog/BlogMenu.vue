@@ -1,6 +1,6 @@
 <template>
   <el-card class="box-card">
-    <div slot="header" class="clearfix">
+    <div slot="header" class="menutitle">
       <span>技术笔记</span>
     </div>
     <el-container>
@@ -10,8 +10,10 @@
     </el-tree>
       <div class="menu-divider"></div>
       <el-container direction="vertical">
-      <div v-for="o in titles" :key="o.id" class="text item">
-        <el-link @click="querymd(o.mdId)">{{ o.mdTitle | ellipsis }}</el-link>
+      <div v-for="o in titles" :key="o.id" class="text item mdlist">
+        <el-tooltip class="item" effect="light" :content="o.mdTitle" placement="right-start">
+          <el-link @click="querymd(o.mdId)" :class="{active: activeName === o.mdId}">{{ o.mdTitle | ellipsis }}</el-link>
+        </el-tooltip>
         <a v-if="blogAdmin === 1"><i class="el-icon-delete" @click="delMd(o.mdId)"></i></a>
       </div>
       </el-container>
@@ -90,6 +92,7 @@ export default {
     querymd (titleid) {
       // 调用父组件方法
       this.$emit('backBlogMainGetMd', titleid)
+      this.activeName = titleid
     },
     delMd (mdid) {
       // 调用父组件方法
@@ -112,5 +115,15 @@ export default {
     vertical-align: top;
     margin-right: 29px;
     margin-left: 30px;
+  }
+  .menutitle{
+    color: #3a8ee6;
+    font-weight: bold;
+  }
+  .active{
+    color: #8cc5ff;
+  }
+  .mdlist{
+    margin-bottom: 6px;
   }
 </style>
