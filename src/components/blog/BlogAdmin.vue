@@ -49,7 +49,9 @@ export default {
     }
   },
   mounted () {
-    this.backBlogMainGetMd(this.mdid)
+    if (sessionStorage.getItem('mdid') === null) {
+      this.backBlogMainGetMd(this.mdid)
+    }
   },
   methods: {
     toMenuAdmin () {

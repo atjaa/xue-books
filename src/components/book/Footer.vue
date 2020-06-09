@@ -19,7 +19,7 @@ export default {
   methods: {
   },
   mounted () {
-    let url = this.mhost + '/visitcount'
+    let url = this.gohost + '/visitcount'
     var vm = this
     axios.defaults.withCredentials = false
     axios.post(url, qs.stringify({

@@ -4,9 +4,9 @@
       <span>技术笔记</span>
     </div>
     <el-container>
-    <el-tree :data="data" :props="defaultProps" :default-expand-all="true"
+    <el-tree ref="mytree" :data="data" :props="defaultProps" :default-expand-all="true"
              :expand-on-click-node="false" :check-on-click-node="true"
-             :highlight-current="true" @node-click="handleNodeClick">
+             :highlight-current="true" node-key="id" :current-node-key="treeCurrentId" @node-click="handleNodeClick">
     </el-tree>
       <div class="menu-divider"></div>
       <el-container direction="vertical">
@@ -35,11 +35,13 @@ export default {
   data () {
     return {
       activeName: 1,
+      treeCurrentId: 1,
       title: '技术笔记',
       data: [],
       defaultProps: {
         children: 'children',
-        label: 'label'
+        label: 'label',
+        id: 'id'
       },
       titles: []
     }
@@ -53,7 +55,14 @@ export default {
       return value
     }
   },
+  created () {
+    let currentkey = JSON.parse(sessionStorage.getItem('current-node-key'))
+    if (currentkey !== null) {
+      this.treeCurrentId = parseInt(currentkey.id)
+    }
+  },
   mounted () {
+    // 初始化菜单树
     let url = this.gohost + '/getmenus'
     var vm = this
     axios.defaults.withCredentials = false
@@ -62,12 +71,14 @@ export default {
       .then(function (response) {
         if (response.data.code === 1) {
           vm.data = response.data.data
-          // 加载菜单列表数据
+          // start
+          // 初始化菜单选中后的文章列表，如果不能从sessionStorage获取则取菜单数据的首项
           let currentkey = JSON.parse(sessionStorage.getItem('current-node-key'))
           if (currentkey === null) {
             currentkey = response.data.data[0]
           }
           vm.handleNodeClick(currentkey)
+          // end
         } else {
           console.log(response.data.message)
         }
@@ -75,13 +86,14 @@ export default {
       .catch(function (response) {
         console.log(response)
       })
+    // 初始化文章，从sessionStorage中获取上次查看的文章进行展示
     let mdid = sessionStorage.getItem('mdid')
     if (mdid !== null && mdid !== undefined) {
       this.querymd(mdid)
     }
   },
   methods: {
-    // 菜单选择事件，查询菜单下的内容列表
+    // 菜单选择事件，查询菜单下的文章列表
     handleNodeClick (data) {
       sessionStorage.setItem('current-node-key', JSON.stringify(data))
       let url = this.gohost + '/mds'
@@ -101,17 +113,19 @@ export default {
           console.log(response.date)
         })
     },
+    // 调用父组件，加载文章信息
     querymd (titleid) {
       // 调用父组件方法
+      this.activeName = parseInt(titleid)
       this.$emit('backBlogMainGetMd', titleid)
-      this.activeName = titleid
       sessionStorage.setItem('mdid', titleid)
     },
     delMd (mdid) {
-      // 调用父组件方法
+      // 调用父组件方法，删除文章
       this.$emit('backBlogMainDelMd', mdid)
     },
     editMd (mdid) {
+      // 跳转到文章编辑页面
       this.$router.push({name: 'blogmdedit', params: {mdid: mdid}})
     }
   }
