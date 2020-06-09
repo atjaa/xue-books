@@ -40,6 +40,7 @@ export default {
   },
   methods: {
     backBlogMainGetMd (titleid) {
+      this.mdid = titleid
       let url = this.gohost + '/md'
       var vm = this
       axios.defaults.withCredentials = false

@@ -60,6 +60,7 @@ export default {
     },
     // 接受子组件函数，获取选中的菜单id
     backBlogMainGetMd (mdid) {
+      this.mdid = mdid
       let url = this.gohost + '/md'
       var vm = this
       axios.defaults.withCredentials = false

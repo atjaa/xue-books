@@ -14,7 +14,10 @@
         <el-tooltip class="item" effect="light" :content="o.mdTitle" placement="right-start">
           <el-link @click="querymd(o.mdId)" :class="{active: activeName === o.mdId}">{{ o.mdTitle | ellipsis }}</el-link>
         </el-tooltip>
-        <a v-if="blogAdmin === 1"><i class="el-icon-delete" @click="delMd(o.mdId)"></i></a>
+        <a v-if="blogAdmin === 1">
+          <i class="el-icon-delete" @click="delMd(o.mdId)"></i>
+          <i class="el-icon-edit" @click="editMd(o.mdId)"></i>
+        </a>
       </div>
       </el-container>
     </el-container>
@@ -59,19 +62,28 @@ export default {
       .then(function (response) {
         if (response.data.code === 1) {
           vm.data = response.data.data
-          // 同时加载菜单第一个对应的列表数据
-          vm.handleNodeClick(response.data.data[0])
+          // 加载菜单列表数据
+          let currentkey = JSON.parse(sessionStorage.getItem('current-node-key'))
+          if (currentkey === null) {
+            currentkey = response.data.data[0]
+          }
+          vm.handleNodeClick(currentkey)
         } else {
           console.log(response.data.message)
         }
       })
       .catch(function (response) {
-        console.log(response.date)
+        console.log(response)
       })
+    let mdid = sessionStorage.getItem('mdid')
+    if (mdid !== null && mdid !== undefined) {
+      this.querymd(mdid)
+    }
   },
   methods: {
     // 菜单选择事件，查询菜单下的内容列表
     handleNodeClick (data) {
+      sessionStorage.setItem('current-node-key', JSON.stringify(data))
       let url = this.gohost + '/mds'
       var vm = this
       axios.defaults.withCredentials = false
@@ -93,10 +105,14 @@ export default {
       // 调用父组件方法
       this.$emit('backBlogMainGetMd', titleid)
       this.activeName = titleid
+      sessionStorage.setItem('mdid', titleid)
     },
     delMd (mdid) {
       // 调用父组件方法
       this.$emit('backBlogMainDelMd', mdid)
+    },
+    editMd (mdid) {
+      this.$router.push({name: 'blogmdedit', params: {mdid: mdid}})
     }
   }
 }

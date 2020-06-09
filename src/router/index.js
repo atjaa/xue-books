@@ -7,6 +7,7 @@ import BlogMain from '@/components/blog/BlogMain'
 import BlogMenuEdit from '@/components/blog/BlogMenuEdit'
 import BlogMdAdd from '@/components/blog/BlogMdAdd'
 import BlogAdmin from '@/components/blog/BlogAdmin'
+import BlogMdEdit from '@/components/blog/BlogMdEdit'
 
 Vue.use(Router)
 
@@ -41,6 +42,11 @@ export default new Router({
           path: '/blog/md/add',
           name: 'blogmdadd',
           component: BlogMdAdd
+        },
+        {
+          path: '/blog/md/edit',
+          name: 'blogmdedit',
+          component: BlogMdEdit
         }
       ]
     },
