@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import First from '@/components/book/First'
 import Xue from '@/components/xue/Xue'
+import Xlogin from '@/components/xue/Xlogin'
 import About from '@/components/xue/About'
 import BlogMain from '@/components/blog/BlogMain'
 import BlogMenuEdit from '@/components/blog/BlogMenuEdit'
@@ -26,6 +27,11 @@ export default new Router({
           path: '/xabout',
           name: 'xabout',
           component: About
+        },
+        {
+          path: '/xlogin',
+          name: 'xlogin',
+          component: Xlogin
         },
         {
           path: '/blog/admin',

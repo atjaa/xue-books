@@ -84,6 +84,12 @@ Vue.component('x-head', Xhead)
 Vue.component('b-menu', BlogMenu)
 Vue.component('quill-editor', quillEditor)
 /* eslint-disable no-new */
+var pathArray = [ // 需要登陆验证的页面
+  '/blog/admin',
+  '/blog/menu/admin',
+  '/blog/md/add',
+  '/blog/md/edit'
+]
 new Vue({
   el: '#app',
   router,
@@ -92,12 +98,24 @@ new Vue({
 })
 
 router.beforeEach((to, from, next) => {
-  if (to.path === '/addbook' && sessionStorage.getItem('user') === null) {
+  // TODO 问题1：直接打开需要加密验证的页面，这里逻辑走不到
+  // TODO 问题2：book中登录校验也无效了
+  if (skipCheck(to.path) && sessionStorage.getItem('user') === null) {
     next({
-      path: '/login',
+      path: '/xlogin',
       query: {redirect: to.fullPath}
     })
   } else {
     next()
   }
 })
+function skipCheck (path) {
+  let check = false
+  pathArray.forEach(function (item, index) {
+    if (item === path) {
+      check = true
+      return check
+    }
+  })
+  return check
+}

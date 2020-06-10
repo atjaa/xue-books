@@ -28,6 +28,7 @@ export default {
     }
   },
   mounted () {
+    // TODO 已經沒有验证是否登录的作用了，这里只能做登录计数，后面需要优化掉
     let url = this.mhost + '/iflogin'
     axios.defaults.withCredentials = false
     axios.post(url, qs.stringify({
