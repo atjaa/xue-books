@@ -9,6 +9,8 @@ import BlogMenuEdit from '@/components/blog/BlogMenuEdit'
 import BlogMdAdd from '@/components/blog/BlogMdAdd'
 import BlogAdmin from '@/components/blog/BlogAdmin'
 import BlogMdEdit from '@/components/blog/BlogMdEdit'
+import Xmonitor from '@/components/monitor/Xmonitor'
+import XIPDetail from '@/components/monitor/XIPDetail'
 
 Vue.use(Router)
 
@@ -27,6 +29,16 @@ export default new Router({
           path: '/xabout',
           name: 'xabout',
           component: About
+        },
+        {
+          path: '/xmonitor',
+          name: 'xmonitor',
+          component: Xmonitor
+        },
+        {
+          path: '/xipdetail',
+          name: 'xipdetail',
+          component: XIPDetail
         },
         {
           path: '/xlogin',

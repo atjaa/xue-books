@@ -16,6 +16,7 @@ import { quillEditor } from 'vue-quill-editor'
 import 'quill/dist/quill.core.css'
 import 'quill/dist/quill.snow.css'
 import 'quill/dist/quill.bubble.css'
+import echarts from 'echarts'
 import { Button
   , ButtonGroup, Menu, MenuItem, MenuItemGroup, Submenu
   , Dialog, Breadcrumb, BreadcrumbItem, Divider
@@ -70,6 +71,7 @@ Vue.use(Tree)
 Vue.use(Card)
 Vue.config.productionTip = false
 Vue.prototype.$message = Message
+Vue.prototype.$echarts = echarts
 Vue.prototype.mhost = process.env.MYHTTP + window.location.host.split(':')[0] + process.env.MYPYTHONPORT + '/bot'
 Vue.prototype.gohost = process.env.MYHTTP + window.location.host.split(':')[0] + process.env.MYGOOPORT + '/goo'
 // Vue.prototype.mhost = 'http://localhost:8080/bot' // python服务

@@ -9,6 +9,7 @@
           <li><a href="http://blog.xue37.cn" target="_blank">博客</a></li>
           <li><a href="https://github.com/lijinzhuang" target="_blank">GitHub</a></li>
           <li><a href="#" v-on:click="about">关于</a></li>
+          <li><a href="#" v-on:click="monitor">监控</a></li>
         </ul>
       </div>
     </el-col>
@@ -22,6 +23,9 @@ export default {
   methods: {
     about () {
       this.$router.push({name: 'xabout'})
+    },
+    monitor () {
+      this.$router.push({name: 'xmonitor'})
     },
     first () {
       this.$router.push({name: 'blog'})
